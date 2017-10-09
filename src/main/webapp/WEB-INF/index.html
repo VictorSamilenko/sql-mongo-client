@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css">
+
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/app.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div>
+    <label for="sql-input">sql:</label>
+    <textarea id="sql-input" class="form-control" rows="5"></textarea>
+    <button id="run-sql" type="button" class="btn btn-success">RUN</button>
+    <p class="text-danger"></p>
+</div>
+
+<article>
+    <table class="table table-inverse">
+        <thead>
+        <tr id="result-tr">
+        </tr>
+        </thead>
+        <tbody id="result-body">
+        </tbody>
+    </table>
+</article>
+</body>
+</html>
