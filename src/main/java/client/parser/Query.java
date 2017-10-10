@@ -8,22 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.mongodb.operation.OrderBy.ASC;
-import static com.mongodb.operation.OrderBy.DESC;
-
-import client.parser.Query;
-import com.mongodb.client.model.Sorts;
-import com.mongodb.operation.OrderBy;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.bson.conversions.Bson;
-
 public class Query {
     private String tableName;
     private ArrayList<Pair> orderFields = new ArrayList();

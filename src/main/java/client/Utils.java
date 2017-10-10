@@ -35,10 +35,7 @@ public class Utils {
             array.add(object);
         }
         JSONArray jsonFields = new JSONArray();
-        fields.forEach(s -> {
-                    jsonFields.add(s);
-                }
-        );
+        fields.forEach(s -> jsonFields.add(s));
         result.put("fields", jsonFields);
         result.put("data", array);
         return result.toJSONString();

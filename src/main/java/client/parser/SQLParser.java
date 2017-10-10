@@ -7,8 +7,6 @@ import org.bson.conversions.Bson;
 import java.util.ArrayList;
 
 import static client.parser.SQLParser.KeyWords.BY;
-import static com.mongodb.QueryOperators.AND;
-import static com.mongodb.QueryOperators.OR;
 
 public class SQLParser {
     private String sql;
@@ -17,6 +15,11 @@ public class SQLParser {
         this.sql = sql;
     }
 
+    /**
+     * Parse the sql and return {@link Query}
+     *
+     * @return {@link Query}
+     */
     public Query parse() {
         String[] strings = sql.split("(\\s*,\\s*|\\s+)");
         Query query = new Query();
@@ -65,6 +68,14 @@ public class SQLParser {
         return query;
     }
 
+    /**
+     * Create {@link Bson} condition from params
+     *
+     * @param fieldName
+     * @param operator   {@link Operator}
+     * @param fieldValue
+     * @return Bson condition
+     */
     public Bson getCondition(String fieldName, Operator operator, Object fieldValue) {
         switch (operator) {
             case EQ: return Filters.eq(fieldName, fieldValue);
@@ -77,6 +88,13 @@ public class SQLParser {
         throw new RuntimeException(String.format("Operator %s not found!", operator.name()));
     }
 
+
+    /**
+     * Parse string conditions in {@link Bson} condition
+     *
+     * @param conditionsStr sql conditions
+     * @return created Bson condition
+     */
     public Bson parseCondition(String conditionsStr) {
         ArrayList<String> innerConditions = new ArrayList<>();
         String outerConditions = splitCondition(conditionsStr, innerConditions);
@@ -156,6 +174,13 @@ public class SQLParser {
         return prevBson;
     }
 
+    /**
+     * Divide {@param conditionsStr} into inner {@param conditions} and return outer conditions
+     *
+     * @param conditionsStr sql conditions
+     * @param conditions    inner sql conditions
+     * @return outer sql conditions
+     */
     public String splitCondition(String conditionsStr, ArrayList<String> conditions) {
         StringBuilder sb = new StringBuilder();
         StringBuilder result = new StringBuilder();

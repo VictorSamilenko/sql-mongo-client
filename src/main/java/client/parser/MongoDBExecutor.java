@@ -1,14 +1,10 @@
 package client.parser;
 
-
-import client.parser.Query;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Sorts;
-import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +18,12 @@ public class MongoDBExecutor {
         this.database = database;
     }
 
+    /**
+     * Execute query and return set of Documents
+     *
+     * @param query {@link Query}
+     * @return founded documents {@link Document}
+     */
     public FindIterable<Document> execute(Query query) {
         MongoCursor collectIterator = database.listCollectionNames().iterator();
         int countMatches = 0;
